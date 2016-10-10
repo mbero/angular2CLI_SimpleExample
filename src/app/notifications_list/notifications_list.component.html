@@ -1,0 +1,91 @@
+<div class='col-md-3'>
+   <div>
+      <ul class='nav nav-pills' id='toolbar_buttons'>
+         <li class='active'> <button type='button' id='first_tab' class='btn btn-primary'>List</button> </li>
+         <li> <button type='button' id='second_tab' class='btn btn-default'>Filters</button> </li>
+      </ul>
+      <br> <!-- Second left side bar--> 
+      <div>
+         <div class='row' id='first_button_panel'>
+            <h4>Filter by readed messages</h4>
+            <div class='checkbox'> <label> <input id='all_checkbox' type='checkbox' value=''>All</label> </div>
+            <div class='checkbox'> <label> <input id='not_readed_checkbox' type='checkbox' value=''>Not readed</label> </div>
+         </div>
+      </div>
+      <!-- End of 'Second left side bar' --> 
+   </div>
+   <!-- First left side bar--> 
+   <div class='row' id='second_button_panel'>
+      <h4>Date range</h4>
+      <form class='form-horizontal' role='form'>
+         <div class='col-sm-4'>
+            <div class='form-group'> </div>
+            <input type='text' name='daterange' value='' id='daterange'/> 
+         </div>
+         <div class='form-group'>
+            <div class='col-sm-2'> </div>
+            <div class='col-sm-10'> </div>
+         </div>
+      </form>
+   </div>
+   <div class='row' >
+      <!--Disable all filters--><button type='button' id='disableallfilters' class='btn btn-danger' onclick='disableAllFiltersHandler()'>Disable all filters</button> 
+   </div>
+</div>
+<div class='col-md-9'>
+   
+
+        <div  class='col-md-2 vertical-align-right'>
+            <h4>
+                <p class='text-right'>Sort by :</p>
+            </h4>
+        </div>
+        <div class='col-md-3'>
+            <div class='dropdown'>
+                <button class='btn btn-default dropdown-toggle' type='button' data-toggle='dropdown' id='sort_by_button'>Date (ASC)<span class='caret'></span> </button> 
+                <ul class='dropdown-menu' id='sort_by_list'>
+                    <li><a id='dateASCSortOption'>Date (ASC)</a></li>
+                    <li><a id='dateDESCSortOption'>Date (DESC)</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+   <div class='col-md-2 vertical-align-right'>
+      <h4>
+         <p class='text-right'>Results :</p>
+      </h4>
+   </div>
+   <div class='col-md-3'>
+      <div class='dropdown'>
+         <button class='btn btn-default dropdown-toggle' type='button' data-toggle='dropdown' id='results_per_page_button'>3<span class='caret'></span> </button> 
+         <ul class='dropdown-menu' id='sort_by_list'>
+            <li><a href='#' id='threeResultsPerPage'>3</a></li>
+            <li><a href='#' id='sixResultsPerPage'>6</a></li>
+            <li><a href='#' id='nineResultsPerPage'>9</a></li>
+         </ul>
+      </div>
+   </div>
+   <div id='notifications_list'>
+        <br>
+        <li *ngFor="let item of notificationsList; let i = index; trackBy: trackByFn">
+                   
+    
+            <!--Paginated content --> 
+            <div class='row'>
+                <div class='col-md-12'>
+                    <div class='panel panel-default'>
+                        {{item}}
+                    </div>
+                </div>
+            </div>
+
+        </li>
+
+        <!--  {{notificationsList}} NotificationsList from angular service -->
+   </div>
+
+   <!-- Begin of pagination component --> 
+   <div id='page-selection' ></div>
+   <!-- End of pagination component --> 
+</div>
