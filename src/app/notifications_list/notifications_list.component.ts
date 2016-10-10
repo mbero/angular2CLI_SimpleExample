@@ -8,13 +8,12 @@ import { NotificationsService } from '../services/notifications_service';
 })
 export class NotificationsListComponent {
 
-
   title = 'NotificationsListComponent';
   notificationsList;
-  showLeftColumn = false;
-  
+
   constructor(notificationsService : NotificationsService) {
-      this.notificationsList = notificationsService.getNotificationsList();
+      this.notificationsList = notificationsService.getFeaturedROs().
+      subscribe(notificationsList => this.notificationsList = notificationsList, err => { console.log(err);});
   }
 
 }

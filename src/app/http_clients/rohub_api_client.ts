@@ -14,16 +14,11 @@ export class ROHUBApiClient {
      // Resolve HTTP using the constructor
      constructor (private http: Http) {}
      // private instance variable to hold base url
-     private featuredROsURL = 'http://beta.rohub.org/portal/ros/featured?amount=5&load=false'; 
+     private featuredROsURL = 'http://beta.rohub.org/portal/ros/featured?amount=5&load=false';
 
-    // Fetch 5 featured ROs  
-    getFeaturedROs () : Observable<ResearchObject[]> {
-         // ...using get request
-         return this.http.get(this.featuredROsURL)
-                        // ...and calling .json() on the response to return data
-                         .map((res:Response) => res.json())
-                         //...errors if any
-                         .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
 
-     }
+    getFeaturedROs() {
+        return this.http.get(this.featuredROsURL).map(response => response.json());
+    }
+
 }
