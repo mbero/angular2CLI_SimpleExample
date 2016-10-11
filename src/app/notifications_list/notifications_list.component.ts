@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NotificationsService } from '../services/notifications_service';
+import { ROService } from '../services/ro_service';
 import { ResearchObject }   from '../model/ResearchObject';
+import { Notification }   from '../model/Notification';
 
 @Component({
   selector: 'notifications-list',
@@ -10,10 +11,12 @@ import { ResearchObject }   from '../model/ResearchObject';
 
 export class NotificationsListComponent {
 
-  featuredROs = Array<ResearchObject>();
+  notifications = Array<Notification>();
 
-  constructor(notificationsService : NotificationsService) {
-      notificationsService.getFeaturedROs().subscribe(res => this.featuredROs = res);
+  constructor(roService : ROService) {
+      var roURI = 'http://sandbox.wf4ever-project.org/rodl/ROs/VSM_CampiFlegrei.bundle/';
+      roService.getAllNotificationsForGivenRO(roURI).subscribe(res => this.notifications = res);
   }
+
 
 }

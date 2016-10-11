@@ -5,14 +5,13 @@ import { HttpModule } from '@angular/http';
 import {LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {NotificationsService} from './services/notifications_service';
+import {ROService} from './services/ro_service';
 import {routing} from './app.routing'
 
 import { AppComponent } from './app.component';
 import { NotificationsListComponent } from './notifications_list/notifications_list.component';
 import { MainPageComponent } from './main_page/main_page.component';
 
-import { ROHUBApiClient } from './http_clients/rohub_api_client';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,7 @@ import { ROHUBApiClient } from './http_clients/rohub_api_client';
   ],
   providers: [
       { provide : LocationStrategy, useClass : HashLocationStrategy},
-    NotificationsService, ROHUBApiClient
+    ROService
   ],
   bootstrap: [AppComponent]
 })
