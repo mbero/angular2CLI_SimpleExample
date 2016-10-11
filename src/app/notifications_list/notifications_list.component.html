@@ -70,6 +70,7 @@
    </div>
    <div id='notifications_list'>
         <br>
+        {{featuredROs}}
         <li *ngFor="let item of notificationsList; let i = index; trackBy: trackByFn">
             <!--Paginated content --> 
             <div class='row'>
